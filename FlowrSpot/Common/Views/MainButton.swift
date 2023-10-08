@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomButton: UIButton {
+class MainButton: UIButton {
     // Custom initialization for your button
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,8 +22,10 @@ class CustomButton: UIButton {
     
     private func setupButton() {
         // Customize the appearance of your button here
-        backgroundColor = UIColor.blue
+        backgroundColor = UIColor.flowrPink
         setTitleColor(UIColor.white, for: .normal)
         layer.cornerRadius = 8
     }
 }
+
+
