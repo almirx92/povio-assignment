@@ -12,27 +12,48 @@ import SnapKit
 class SightingListViewController: UIViewController {
 
     var tableView : UITableView!
+    private lazy var footerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.orange
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
+        
         tableView = UITableView()
+      //  tableView.backgroundColor = UIColor.white
         tableView.translatesAutoresizingMaskIntoConstraints = false
 
         //  tableView.dataSource = self
         tableView.delegate = self
         tableView.dataSource = self
-        
-        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        view.addSubview(tableView)
+        self.view.addSubview(tableView)
+        footerView.backgroundColor = UIColor.orange
+        self.view.addSubview(footerView)
         
+//        let customButton = AddSightButton(type: .system)
+//               customButton.frame = CGRect(x: 100, y: 100, width: 200, height: 50)
+//               customButton.setTitle("Custom Button", for: .normal)
+//               view.addSubview(customButton)
+           
         // Use SnapKit to set up Auto Layout constraints
                 tableView.snp.makeConstraints { make in
-                    make.edges.equalToSuperview() // This will make the table view fill its superview
+                    make.edges.equalToSuperview()
+                    // This will make the table view fill its superview
                 }
-
+        
+       
+        
+        footerView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide)
+            make.height.equalTo(100)
+        }
+        
         
        
     }

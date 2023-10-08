@@ -52,6 +52,7 @@
 		88B07E0D2AD1C0D3006F87BB /* SightingListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B07E0C2AD1C0D3006F87BB /* SightingListPresenter.swift */; };
 		88B07E0F2AD1C0E4006F87BB /* SightingListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B07E0E2AD1C0E4006F87BB /* SightingListRouter.swift */; };
 		88B07E112AD1C0FD006F87BB /* SightingListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B07E102AD1C0FD006F87BB /* SightingListInteractor.swift */; };
+		88B07E182AD31A4C006F87BB /* AddSightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B07E172AD31A4C006F87BB /* AddSightButton.swift */; };
 		99373B632562EF3E005E0116 /* EndpointEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99373B622562EF3E005E0116 /* EndpointEncodable.swift */; };
 		99373B6F2562EFE6005E0116 /* FlowersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99373B6E2562EFE6005E0116 /* FlowersAPI.swift */; };
 		99373B752562EFF0005E0116 /* FlowersAPI+Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99373B742562EFF0005E0116 /* FlowersAPI+Endpoints.swift */; };
@@ -134,6 +135,7 @@
 		88B07E0C2AD1C0D3006F87BB /* SightingListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightingListPresenter.swift; sourceTree = "<group>"; };
 		88B07E0E2AD1C0E4006F87BB /* SightingListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightingListRouter.swift; sourceTree = "<group>"; };
 		88B07E102AD1C0FD006F87BB /* SightingListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightingListInteractor.swift; sourceTree = "<group>"; };
+		88B07E172AD31A4C006F87BB /* AddSightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSightButton.swift; sourceTree = "<group>"; };
 		99373B622562EF3E005E0116 /* EndpointEncodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointEncodable.swift; sourceTree = "<group>"; };
 		99373B6E2562EFE6005E0116 /* FlowersAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowersAPI.swift; sourceTree = "<group>"; };
 		99373B742562EFF0005E0116 /* FlowersAPI+Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlowersAPI+Endpoints.swift"; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		37603CE5201096D400FB9F78 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				88B07E172AD31A4C006F87BB /* AddSightButton.swift */,
 				373597C7201B2D570000CA57 /* EmptyView.swift */,
 				99EF39B822E7202C001230BD /* SearchView.swift */,
 			);
@@ -677,6 +680,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88B07E182AD31A4C006F87BB /* AddSightButton.swift in Sources */,
 				99EFB8702567ABFE00842287 /* AlamofireNetworkClient+FlowrSpot.swift in Sources */,
 				99373B8B25631A19005E0116 /* Aliases.swift in Sources */,
 				37B4196C200E06C600173B80 /* AppDelegate.swift in Sources */,
