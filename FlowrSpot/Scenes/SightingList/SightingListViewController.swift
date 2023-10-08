@@ -10,21 +10,33 @@ import UIKit
 import SnapKit
 
 class SightingListViewController: UIViewController {
-    
-    private lazy var tableView : UITableView = {
+    //MARK :- SubViews
+    private lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.backgroundColor = UIColor.white
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return tableView
     }()
+    
     private lazy var footerView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.orange
+        view.backgroundColor = UIColor.white
         return view
     }()
     
-    fileprivate func layout(_ addSBtn: MainButton) {
+    private lazy var addSightButton: MainButton = {
+        let button = MainButton(type: .system)
+        button.setTitle(" Add New Sighting", for: .normal)
+        return button
+    }()
+    
+    /// Layout Contrains
+    fileprivate func layout() {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-            
         }
         
         footerView.snp.makeConstraints { make in
@@ -32,7 +44,8 @@ class SightingListViewController: UIViewController {
             make.bottom.equalTo(self.view.safeAreaLayoutGuide)
             make.height.equalTo(100)
         }
-        addSBtn.snp.makeConstraints { make in
+        
+        addSightButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
             make.width.equalTo(200)
@@ -40,40 +53,28 @@ class SightingListViewController: UIViewController {
         }
     }
     
-    fileprivate func setupViews() {
-        tableView = UITableView()
-        //  tableView.backgroundColor = UIColor.white
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        //  tableView.dataSource = self
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    /// Adding subviews screen
+    fileprivate func addSubViews() {
         self.view.addSubview(tableView)
-        footerView.backgroundColor = UIColor.white
         self.view.addSubview(footerView)
-        
-        let addSBtn = MainButton(type: .system)
-        addSBtn.setTitle(" Add New Sighting", for: .normal)
-        footerView.addSubview(addSBtn)
-        
-        
-        layout(addSBtn)
+        footerView.addSubview(addSightButton)
+    }
+    
+    // MARK :- Lifecycles
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        addSubViews()
+        layout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
-        setupViews()
-        
-        
-        
+
     }
-    
-    
 }
 
 extension SightingListViewController: UITableViewDelegate, UITableViewDataSource{
