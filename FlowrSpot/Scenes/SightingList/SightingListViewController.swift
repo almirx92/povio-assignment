@@ -12,6 +12,7 @@ class SightingListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.white
 
         // Create a UILabel
         let label = UILabel()
@@ -19,7 +20,7 @@ class SightingListViewController: UIViewController {
         // Configure label properties
         label.text = "Hello, World!"
         label.font = UIFont.systemFont(ofSize: 18)
-        label.textColor = UIColor.white
+        label.textColor = UIColor.black
         label.textAlignment = .center
 
         // Add the label as a subview

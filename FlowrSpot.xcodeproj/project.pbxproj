@@ -231,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				37F6090A2012220200087B53 /* Home */,
+				88B07E092AD1BFC5006F87BB /* SightingList */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -293,7 +294,6 @@
 		378E922422B0E21B008C06F0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				88B07E092AD1BFC5006F87BB /* SightingList */,
 				37DFD3252011E41C001023ED /* FlowerCollectionViewCell.swift */,
 				378E922522B0E227008C06F0 /* HomeContentView.swift */,
 				37DFD3242011E41C001023ED /* HomeHeaderView.swift */,
@@ -389,12 +389,36 @@
 		88B07E092AD1BFC5006F87BB /* SightingList */ = {
 			isa = PBXGroup;
 			children = (
+				88B07E122AD2E72A006F87BB /* DataSource */,
+				88B07E132AD2E740006F87BB /* Utils */,
+				88B07E142AD2E74B006F87BB /* Views */,
 				88B07E102AD1C0FD006F87BB /* SightingListInteractor.swift */,
 				88B07E0C2AD1C0D3006F87BB /* SightingListPresenter.swift */,
 				88B07E0E2AD1C0E4006F87BB /* SightingListRouter.swift */,
 				88B07E0A2AD1C021006F87BB /* SightingListViewController.swift */,
 			);
 			path = SightingList;
+			sourceTree = "<group>";
+		};
+		88B07E122AD2E72A006F87BB /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		88B07E132AD2E740006F87BB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		88B07E142AD2E74B006F87BB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		99373B612562EF36005E0116 /* Client */ = {
