@@ -90,13 +90,13 @@ extension SightingListViewController: UITableViewDelegate, UITableViewDataSource
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         // Configure the cell with data
-        cell.textLabel?.text = "Row \(indexPath.row)"
+        //cell.textLabel?.text = "Row \(indexPath.row)"
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 500
     }
 }
 
