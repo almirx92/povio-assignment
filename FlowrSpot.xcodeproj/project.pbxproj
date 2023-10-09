@@ -215,8 +215,8 @@
 			isa = PBXGroup;
 			children = (
 				37603CE72010970F00FB9F78 /* Foundation */,
-				37603CE82010971400FB9F78 /* UIKit */,
 				88B07E232AD482A6006F87BB /* UIHelpers */,
+				37603CE82010971400FB9F78 /* UIKit */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -738,7 +738,6 @@
 				37603CEE2010977F00FB9F78 /* RowType.swift in Sources */,
 				99EF39B922E7202D001230BD /* SearchView.swift in Sources */,
 				37603CEC2010977100FB9F78 /* SectionType.swift in Sources */,
-				88B07E252AD482B7006F87BB /* Spacing.swift in Sources */,
 				88B07E222AD47E78006F87BB /* SightCommentView.swift in Sources */,
 				88B07E1E2AD47E3F006F87BB /* SightImageView.swift in Sources */,
 				88B07E112AD1C0FD006F87BB /* SightingListInteractor.swift in Sources */,
@@ -747,6 +746,7 @@
 				88B07E0B2AD1C021006F87BB /* SightingListViewController.swift in Sources */,
 				88B07E1C2AD37802006F87BB /* SightListTableViewCell.swift in Sources */,
 				88B07E202AD47E67006F87BB /* SightMessageView.swift in Sources */,
+				88B07E252AD482B7006F87BB /* Spacing.swift in Sources */,
 				37DFD34E2011E817001023ED /* TabBarController.swift in Sources */,
 				37DFD33C2011E48D001023ED /* UIColor+FlowrSpot.swift in Sources */,
 				37DFD3392011E48D001023ED /* UIFont+FlowrSpot.swift in Sources */,
