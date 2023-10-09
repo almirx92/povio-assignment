@@ -13,6 +13,21 @@ final class SightingTableViewCell: UITableViewCell {
     // MARK: - Subviews
     private lazy var sightImage = UIImageView()
     private lazy var titleLabel = UILabel()
+    private lazy var sightImageView : UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.blue
+        return view
+    }()
+    private lazy var sightMessageView : UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.red
+        return view
+    }()
+    private lazy var sightCommentView : UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.yellow
+        return view
+    }()
     
     // MARK: - Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -37,19 +52,40 @@ final class SightingTableViewCell: UITableViewCell {
     
     // MARK: - Layout
     private func addSubviews() {
-        contentView.addSubview(sightImage)
-        sightImage.addSubview(titleLabel)
+        contentView.addSubview(sightImageView)
+        contentView.addSubview(sightMessageView)
+        contentView.addSubview(sightCommentView)
+        
+//        contentView.addSubview(sightImage)
+//        sightImage.addSubview(titleLabel)
     }
     
     private func layout() {
-        sightImage.snp.makeConstraints {
-            $0.leading.top.trailing.equalToSuperview()
-            $0.height.equalTo(100)
+        
+        sightImageView.snp.makeConstraints { make in
+            make.leading.trailing.top.equalToSuperview()
+            make.height.equalTo(280)
         }
         
-        titleLabel.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-16)
+        sightMessageView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(sightImageView.snp.bottom)
+            make.height.equalTo(150)
         }
+        
+        sightCommentView.snp.makeConstraints { make in
+            make.trailing.leading.bottom.equalToSuperview()
+            make.top.equalTo(sightMessageView.snp.bottom)
+        }
+        
+//        sightImage.snp.makeConstraints {
+//            $0.leading.top.trailing.equalToSuperview()
+//            $0.height.equalTo(100)
+//        }
+//
+//        titleLabel.snp.makeConstraints {
+//            $0.leading.trailing.equalToSuperview()
+//            $0.bottom.equalToSuperview().offset(-16)
+//        }
     }
 }
