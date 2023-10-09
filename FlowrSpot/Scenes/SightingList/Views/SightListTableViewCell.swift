@@ -13,21 +13,9 @@ final class SightingTableViewCell: UITableViewCell {
     // MARK: - Subviews
     private lazy var sightImage = UIImageView()
     private lazy var titleLabel = UILabel()
-    private lazy var sightImageView : UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.blue
-        return view
-    }()
-    private lazy var sightMessageView : UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.red
-        return view
-    }()
-    private lazy var sightCommentView : UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.yellow
-        return view
-    }()
+    private lazy var sightImageView = SightImageView()
+    private lazy var sightMessageView = SightMessageView()
+    private lazy var sightCommentView = SightCommentView()
     
     // MARK: - Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
