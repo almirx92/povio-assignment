@@ -55,25 +55,15 @@ final class SightingTableViewCell: UITableViewCell {
             make.height.equalTo(280)
         }
         
-        sightMessageView.snp.makeConstraints { make in
+        sightCommentView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(sightImageView.snp.bottom)
             make.height.equalTo(150)
         }
         
-        sightCommentView.snp.makeConstraints { make in
+        sightMessageView.snp.makeConstraints { make in
             make.trailing.leading.bottom.equalToSuperview()
             make.top.equalTo(sightMessageView.snp.bottom)
         }
-        
-//        sightImage.snp.makeConstraints {
-//            $0.leading.top.trailing.equalToSuperview()
-//            $0.height.equalTo(100)
-//        }
-//
-//        titleLabel.snp.makeConstraints {
-//            $0.leading.trailing.equalToSuperview()
-//            $0.bottom.equalToSuperview().offset(-16)
-//        }
     }
 }

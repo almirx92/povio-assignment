@@ -24,7 +24,7 @@ class SightMessageView: UIView {
     
     private func setupView() {
         // Configure your view here
-        backgroundColor = UIColor.red
+        backgroundColor = UIColor.yellow
     }
 }
 

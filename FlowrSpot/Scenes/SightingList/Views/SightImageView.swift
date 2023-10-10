@@ -56,14 +56,12 @@ class SightImageView: UIView {
                         make.centerX.equalToSuperview()
                         make.leading.equalToSuperview().offset(96)
                         make.trailing.equalToSuperview().offset(-30)
-                        // Add any additional constraints for the titleLabel as needed
                     }
                     
                     descriptionLabel.snp.makeConstraints { make in
                         make.top.equalTo(titleLabel.snp.bottom).offset(8)
                         make.leading.equalTo(titleLabel)
                         make.trailing.equalTo(titleLabel)
-                        // Add any additional constraints for the descriptionLabel as needed
                     }
         }
     }
