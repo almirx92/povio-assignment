@@ -22,19 +22,10 @@ final class SightingTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews()
         layout()
-        test()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    /// temporary
-    private func test() {
-        guard let url = URL(string: "https://images.unsplash.com/photo-1604085572504-a392ddf0d86a") else { return }
-        sightImage.setImage(with: url)
-        titleLabel.text = "Cviješće xd"
-        titleLabel.backgroundColor = UIColor.white
     }
     
     
@@ -43,13 +34,9 @@ final class SightingTableViewCell: UITableViewCell {
         contentView.addSubview(sightImageView)
         contentView.addSubview(sightMessageView)
         contentView.addSubview(sightCommentView)
-        
-//        contentView.addSubview(sightImage)
-//        sightImage.addSubview(titleLabel)
     }
     
     private func layout() {
-        
         sightImageView.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
             make.height.equalTo(280)
@@ -63,7 +50,7 @@ final class SightingTableViewCell: UITableViewCell {
         
         sightMessageView.snp.makeConstraints { make in
             make.trailing.leading.bottom.equalToSuperview()
-            make.top.equalTo(sightMessageView.snp.bottom)
+            make.top.equalTo(sightCommentView.snp.bottom)
         }
     }
 }

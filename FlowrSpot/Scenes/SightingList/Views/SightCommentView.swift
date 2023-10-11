@@ -10,6 +10,7 @@ import UIKit
 
 class SightCommentView: UIView {
     
+    //MARK: - Atributes
     private lazy var profileImageView = UIImageView()
     private lazy var flowerTitle = UILabel()
     private lazy var authorTitle = UILabel()
@@ -27,7 +28,7 @@ class SightCommentView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    // Adding sub views
+    // MARK: - Add sub views
     private func addSubViews(){
         addSubview(profileImageView)
         addSubview(flowerTitle)
@@ -35,7 +36,7 @@ class SightCommentView: UIView {
         addSubview(descriptionText)
         addSubview(borderView)
     }
-    // Setup views
+    // MARK: - Setup views
     private func setupView() {
         // Configure your view here
         backgroundColor = UIColor.white
@@ -63,6 +64,7 @@ class SightCommentView: UIView {
         borderView.backgroundColor = .gray
         
     }
+    //MARK: - Layout
     private func layout(){
         profileImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)
