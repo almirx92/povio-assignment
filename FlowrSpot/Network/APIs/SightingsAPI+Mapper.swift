@@ -8,17 +8,17 @@
 
 import Foundation
 
-extension SightingsAPI {
-  struct SightingsMapper: ModelMapper {
-    static func transform(response: SightingsResponse) -> [Sighting]? {
-      response.sightings.map {
-        Flower(id: $0.id,
-               name: $0.name,
-               latinName: $0.latinName,
-               sightings: $0.sightings,
-               profilePicture: URL(string: "http:\($0.profilePicture)"),
-               isFavorite: $0.favorite)
-      }
-    }
-  }
-}
+//extension SightingsAPI {
+//  struct SightingsMapper: ModelMapper {
+//    static func transform(response: SightingsResponse) -> [Sighting]? {
+//      response.sightings.map {
+//        Flower(id: $0.id,
+//               name: $0.name,
+//               latinName: $0.latinName,
+//               sightings: $0.sightings,
+//               profilePicture: URL(string: "http:\($0.profilePicture)"),
+//               isFavorite: $0.favorite)
+//      }
+//    }
+//  }
+//}
