@@ -36,7 +36,7 @@ private extension TabBarController {
     let sightingListController = SightingListViewController()
     let homeNavigationController = NavigationController(rootViewController: homeViewController)
     let sightListNavigationController = NavigationController(rootViewController: sightingListController )
-    let viewControllers = [homeNavigationController, UIViewController(), sightingListController, UIViewController()]
+    let viewControllers = [homeNavigationController, UIViewController(), sightListNavigationController, UIViewController()]
     setViewControllers(viewControllers, animated: true)
     
     if let items = tabBar.items, items.count == viewControllers.count {
