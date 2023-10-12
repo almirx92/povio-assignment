@@ -9,6 +9,11 @@
 import UIKit
 import SnapKit
 
+protocol SightingsDisplayLogic: AnyObject{
+    func displaySightings(_ sightings: SightingsAPI.SightingsResponse)
+    func displayError(title: String, message: String)
+}
+
 class SightingListViewController: UIViewController {
     //MARK :- SubViews
     private lazy var tableView: UITableView = {
@@ -87,6 +92,18 @@ class SightingListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         interactor?.fetchSightingsList()
     }
+}
+
+extension SightingListViewController: SightingsDisplayLogic{
+    func displaySightings(_ sightings: SightingsAPI.SightingsResponse) {
+        return
+    }
+    
+    func displayError(title: String, message: String) {
+        return
+    }
+    
+    
 }
 
 extension SightingListViewController: UITableViewDelegate, UITableViewDataSource{
