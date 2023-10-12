@@ -15,7 +15,10 @@ protocol SightingsDisplayLogic: AnyObject{
 }
 
 class SightingListViewController: UIViewController {
-    //MARK :- SubViews
+    //MARK: - Attributes
+    var interactor : SightingBusinessLogic?
+    
+    //MARK: - SubViews
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = UIColor.white
@@ -38,7 +41,6 @@ class SightingListViewController: UIViewController {
         return button
     }()
     
-    private var interactor: SightingBusinessLogic?
     
     /// Layout Contrains
     fileprivate func layout() {
@@ -69,10 +71,16 @@ class SightingListViewController: UIViewController {
     
     func setup(){
         let interactor = SightingsInteractor()
+        let presenter = SightingsPresenter()
+        interactor.presenter = presenter
+        presenter.viewController = self
         self.interactor = interactor
     }
+    func loadData() {
+      interactor?.fetchSightingsList()
+    }
     
-    // MARK :- Lifecycles
+    // MARK: - Lifecycles
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         addSubViews()
@@ -86,11 +94,7 @@ class SightingListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor?.fetchSightingsList()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        interactor?.fetchSightingsList()
+        loadData()
     }
 }
 
