@@ -17,7 +17,7 @@ class SightingListViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(SightingTableViewCell.self)
         return tableView
     }()
     
@@ -32,6 +32,8 @@ class SightingListViewController: UIViewController {
         button.setTitle(" Add New Sighting", for: .normal)
         return button
     }()
+    
+    private var interactor: SightingBusinessLogic?
     
     /// Layout Contrains
     fileprivate func layout() {
@@ -60,11 +62,17 @@ class SightingListViewController: UIViewController {
         footerView.addSubview(addSightButton)
     }
     
+    func setup(){
+        let interactor = SightingsInteractor()
+        self.interactor = interactor
+    }
+    
     // MARK :- Lifecycles
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         addSubViews()
         layout()
+        setup()
     }
     
     required init?(coder: NSCoder) {
@@ -73,7 +81,11 @@ class SightingListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        interactor?.fetchSightingsList()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        interactor?.fetchSightingsList()
     }
 }
 
@@ -86,8 +98,7 @@ extension SightingListViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueCell(SightingTableViewCell.self)
         
         // Configure the cell with data
         //cell.textLabel?.text = "Row \(indexPath.row)"

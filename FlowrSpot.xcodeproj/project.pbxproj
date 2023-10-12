@@ -48,6 +48,8 @@
 		37F609202012220200087B53 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F609172012220200087B53 /* HomePresenter.swift */; };
 		37F609232012226600087B53 /* FlowersSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F609212012226500087B53 /* FlowersSection.swift */; };
 		37F609242012226600087B53 /* FlowersRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F609222012226600087B53 /* FlowersRow.swift */; };
+		882DB34C2AD7741000B5EFFB /* UITableView+FlowrSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882DB34B2AD7741000B5EFFB /* UITableView+FlowrSpot.swift */; };
+		882DB34E2AD775FA00B5EFFB /* NSObject+FlowrSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882DB34D2AD775FA00B5EFFB /* NSObject+FlowrSpot.swift */; };
 		88B07E0B2AD1C021006F87BB /* SightingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B07E0A2AD1C021006F87BB /* SightingListViewController.swift */; };
 		88B07E0D2AD1C0D3006F87BB /* SightingListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B07E0C2AD1C0D3006F87BB /* SightingListPresenter.swift */; };
 		88B07E0F2AD1C0E4006F87BB /* SightingListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B07E0E2AD1C0E4006F87BB /* SightingListRouter.swift */; };
@@ -141,6 +143,8 @@
 		37F609172012220200087B53 /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		37F609212012226500087B53 /* FlowersSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowersSection.swift; sourceTree = "<group>"; };
 		37F609222012226600087B53 /* FlowersRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowersRow.swift; sourceTree = "<group>"; };
+		882DB34B2AD7741000B5EFFB /* UITableView+FlowrSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+FlowrSpot.swift"; sourceTree = "<group>"; };
+		882DB34D2AD775FA00B5EFFB /* NSObject+FlowrSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+FlowrSpot.swift"; sourceTree = "<group>"; };
 		88B07E0A2AD1C021006F87BB /* SightingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightingListViewController.swift; sourceTree = "<group>"; };
 		88B07E0C2AD1C0D3006F87BB /* SightingListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightingListPresenter.swift; sourceTree = "<group>"; };
 		88B07E0E2AD1C0E4006F87BB /* SightingListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightingListRouter.swift; sourceTree = "<group>"; };
@@ -280,9 +284,11 @@
 		37603CE82010971400FB9F78 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				882DB34D2AD775FA00B5EFFB /* NSObject+FlowrSpot.swift */,
 				37DFD3362011E48D001023ED /* UIColor+FlowrSpot.swift */,
 				37DFD3332011E48D001023ED /* UIFont+FlowrSpot.swift */,
 				99EFB8962567B09C00842287 /* UIImageView+FlowrSpot.swift */,
+				882DB34B2AD7741000B5EFFB /* UITableView+FlowrSpot.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -751,6 +757,7 @@
 				88B07E1A2AD357E3006F87BB /* MainButton.swift in Sources */,
 				99373BCB25631E53005E0116 /* ModelMapper.swift in Sources */,
 				37892D80200F38A600BB8259 /* NavigationController.swift in Sources */,
+				882DB34E2AD775FA00B5EFFB /* NSObject+FlowrSpot.swift in Sources */,
 				37603CEE2010977F00FB9F78 /* RowType.swift in Sources */,
 				99EF39B922E7202D001230BD /* SearchView.swift in Sources */,
 				37603CEC2010977100FB9F78 /* SectionType.swift in Sources */,
@@ -772,6 +779,7 @@
 				37DFD33C2011E48D001023ED /* UIColor+FlowrSpot.swift in Sources */,
 				37DFD3392011E48D001023ED /* UIFont+FlowrSpot.swift in Sources */,
 				99EFB8972567B09C00842287 /* UIImageView+FlowrSpot.swift in Sources */,
+				882DB34C2AD7741000B5EFFB /* UITableView+FlowrSpot.swift in Sources */,
 				3787E6552015D3E90080A599 /* Version.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
