@@ -13,7 +13,7 @@ protocol SightingBusinessLogic {
 }
 
 class SightingsInteractor {
-//  var presenter: SightingPresentationLogic?
+  var presenter: SightingsPresentationLogic?
   private let sightingsAPI: SightingsAPI
   
   init(sightingsAPI: SightingsAPI = .init()) {
@@ -25,9 +25,7 @@ class SightingsInteractor {
 extension SightingsInteractor: SightingBusinessLogic {
     func fetchSightingsList() {
         sightingsAPI.fetchSightingsList().observe { [weak self] in
-         //   self?.presenter?.presentSigtingResult($0)
-            print("Test--------------")
-            print($0)
+           self?.presenter?.presentSightingResult($0)
         }
     }
 }
