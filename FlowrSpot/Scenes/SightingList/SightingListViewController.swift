@@ -17,6 +17,7 @@ protocol SightingsDisplayLogic: AnyObject{
 class SightingListViewController: UIViewController {
     //MARK: - Attributes
     var interactor : SightingBusinessLogic?
+ //   private let dataSource : SightingsDataSource
     
     //MARK: - SubViews
     private lazy var tableView: UITableView = {
@@ -98,9 +99,10 @@ class SightingListViewController: UIViewController {
     }
 }
 
+//MARK: - Display Logic
 extension SightingListViewController: SightingsDisplayLogic{
     func displaySightings(_ sightings: SightingsAPI.SightingsResponse) {
-        return
+        tableView.reloadData()
     }
     
     func displayError(title: String, message: String) {
@@ -120,10 +122,6 @@ extension SightingListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueCell(SightingTableViewCell.self)
-        
-        // Configure the cell with data
-        //cell.textLabel?.text = "Row \(indexPath.row)"
-        
         return cell
     }
     
