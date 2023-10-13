@@ -9,6 +9,8 @@
 import UIKit
 
 class SightCommentView: UIView {
+    //MARK: - Datasource
+    var data : SightingsAPI.Sighting?
     
     //MARK: - Atributes
     private lazy var profileImageView = UIImageView()
@@ -27,6 +29,15 @@ class SightCommentView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    //MARK: - Configure
+    func configure(_ sighting : SightingsAPI.Sighting) {
+        if let fullName = sighting.user?.fullName {
+            authorTitle.text = "by " + fullName
+        } else {
+            authorTitle.text = "John Doe"
+        }
+        descriptionText.text = sighting.description
     }
     // MARK: - Add sub views
     private func addSubViews(){
@@ -48,17 +59,17 @@ class SightCommentView: UIView {
         profileImageView.clipsToBounds = true // This ensures that the image stays within the rounded bounds
         
         //Flower Title
-        flowerTitle.text = "Ballon Flowers"
+    //    flowerTitle.text = "Ballon Flowers"
         flowerTitle.font = UIFont.preferredFont(forTextStyle: .headline)
         flowerTitle.textColor = .black
         
         //Author Title
-        authorTitle.text = "by Anthony Moore"
+   //     authorTitle.text = "by Anthony Moore"
         authorTitle.font = UIFont.preferredFont(forTextStyle: .subheadline)
         authorTitle.textColor = .gray
         
         //Description Text
-        descriptionText.text = "Platycodon grandiflorus (from Ancient Greek πλατύς \"wide\" and κώδων \"bell\") is a species of herbaceous flowering perennial plant of the …"
+  //      descriptionText.text = "Platycodon grandiflorus (from Ancient Greek πλατύς \"wide\" and κώδων \"bell\") is a species of herbaceous flowering perennial plant of the …"
         
         //Border View
         borderView.backgroundColor = .gray

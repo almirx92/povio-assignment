@@ -17,7 +17,8 @@ protocol SightingsDisplayLogic: AnyObject{
 class SightingListViewController: UIViewController {
     //MARK: - Attributes
     var interactor : SightingBusinessLogic?
- //   private let dataSource : SightingsDataSource
+    private var dataSource: [SightingsAPI.Sighting] = []
+
     
     //MARK: - SubViews
     private lazy var tableView: UITableView = {
@@ -87,6 +88,7 @@ class SightingListViewController: UIViewController {
         addSubViews()
         layout()
         setup()
+        loadData()
     }
     
     required init?(coder: NSCoder) {
@@ -102,7 +104,11 @@ class SightingListViewController: UIViewController {
 //MARK: - Display Logic
 extension SightingListViewController: SightingsDisplayLogic{
     func displaySightings(_ sightings: SightingsAPI.SightingsResponse) {
-        tableView.reloadData()
+        if let newSightings = sightings.sightings {
+                    dataSource = newSightings
+                    print(dataSource[0])
+                    tableView.reloadData()
+                }
     }
     
     func displayError(title: String, message: String) {
@@ -116,13 +122,17 @@ extension SightingListViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows you want in your table
-        return 10
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueCell(SightingTableViewCell.self)
-        return cell
+            let data = dataSource[indexPath.row]  // Access the data for the current row
+            if !dataSource.isEmpty{
+            cell.configure(data)  // Configure the cell with the data
+        }
+            return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
