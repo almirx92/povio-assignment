@@ -9,6 +9,8 @@
 import UIKit
 
 class SightMessageView: UIView {
+    //MARK: - Datasource
+    var data : SightingsAPI.Sighting?
     
     //MARK: - Attributes
     private lazy var commentIcon = UIImageView()
@@ -33,7 +35,10 @@ class SightMessageView: UIView {
         // Initialize and configure your view here if it's being created from a storyboard or xib
         setupView()
     }
-    
+    //MARK: - Configure
+    func configure(_ sighting : SightingsAPI.Sighting) {
+       
+    }
     //MARK: - Add Subviews
     private func addSubViews(){
         addSubview(commentIcon)

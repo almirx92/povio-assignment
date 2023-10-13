@@ -12,6 +12,8 @@ import UIKit
 
 class SightImageView: UIView {
     
+    //MARK: - Datasource
+    
     //MARK: - Attributes
     private lazy var sightImage = UIImageView()
     private lazy var titleLabel = UILabel()
@@ -29,18 +31,22 @@ class SightImageView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+    //MARK: - Configure
+    func configure(_ sighting : SightingsAPI.Sighting) {
+        guard let url = URL(string: "https:" + (sighting.picture)!) else { return }
+        sightImage.setImage(with: url)
+        titleLabel.text = sighting.flower?.name
+        descriptionLabel.text = sighting.flower?.latinName
+    }
     //MARK: - Setup views
     private func setupView() {
         // Configure your view here
-        guard let url = URL(string: "https://images.unsplash.com/photo-1604085572504-a392ddf0d86a") else { return }
-        sightImage.setImage(with: url)
         sightImage.contentMode = .scaleToFill
-        titleLabel.text = "Ballon Flowers"
+    //    titleLabel.text = "Ballon Flowers"
         titleLabel.textColor = .white
         titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
         titleLabel.backgroundColor = UIColor.clear
-        descriptionLabel.text = "Platycodon grandiflorus"
+  //      descriptionLabel.text = "Platycodon grandiflorus"
         descriptionLabel.textColor = .gray
         descriptionLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         descriptionLabel.backgroundColor = UIColor.clear
