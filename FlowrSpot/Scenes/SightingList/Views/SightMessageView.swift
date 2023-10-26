@@ -37,8 +37,10 @@ class SightMessageView: UIView {
     }
     //MARK: - Configure
     func configure(_ sighting : SightingsAPI.Sighting) {
-       
+        commentCounter.text = "\(data?.commentsCount ?? 0)"
+        favoritesCounter.text = "\(data?.likesCount ?? 0)"
     }
+    
     //MARK: - Add Subviews
     private func addSubViews(){
         addSubview(commentIcon)
@@ -55,27 +57,34 @@ class SightMessageView: UIView {
         backgroundColor = UIColor.white
         
         //Comment UI elements
-        commentIcon.image = UIImage(systemName: "message.circle.fill")
-        commentCounter.text = "34"
-        commentCounter.textColor = UIColor.gray
+        commentIcon.image = UIImage(named: "icon-comment")?.withRenderingMode(.alwaysTemplate)
+        commentIcon.tintColor = .sightingIconColor
+        
+        commentCounter.font = .custom(type: .regular, size: 12)
+        commentCounter.textColor = .flowrGray
         commentLabel.text = "Comments"
-        commentLabel.textColor = UIColor.gray
+        commentLabel.font = .custom(type: .regular, size: 12)
+        commentLabel.textColor = .flowrGray
         
         //Favorites UI elements
-        favoritesIcon.image = UIImage(systemName: "heart.fill")
-        favoritesCounter.text = "10"
-        favoritesCounter.textColor = UIColor.gray
+        favoritesIcon.image = UIImage(named: "icon-favorite")?.withRenderingMode(.alwaysTemplate)
+        favoritesIcon.tintColor = .sightingIconColor
+        
+        favoritesCounter.font = .custom(type: .regular, size: 12)
+        favoritesCounter.textColor = .flowrGray
         favoritesLabel.text = "Favorites"
-        favoritesLabel.textColor = UIColor.gray
+        favoritesLabel.font = .custom(type: .regular, size: 12)
+        favoritesLabel.textColor = .flowrGray
     }
     
     //MARK: - Layout
     private func layout(){
-
+        
         commentIcon.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)
             make.centerY.equalToSuperview()
-            make.height.width.equalTo(30)
+            make.width.equalTo(16)
+            make.height.equalTo(15)
         }
         commentCounter.snp.makeConstraints { make in
             make.leading.equalTo(commentIcon.snp.trailing).offset(10)
@@ -88,7 +97,8 @@ class SightMessageView: UIView {
         favoritesIcon.snp.makeConstraints { make in
             make.leading.equalTo(commentLabel.snp.trailing).offset(48)
             make.centerY.equalToSuperview()
-            make.height.width.equalTo(30)
+            make.width.equalTo(18)
+            make.height.equalTo(15)
         }
         favoritesCounter.snp.makeConstraints { make in
             make.leading.equalTo(favoritesIcon.snp.trailing).offset(10)
@@ -98,5 +108,5 @@ class SightMessageView: UIView {
             make.leading.equalTo(favoritesCounter.snp.trailing).offset(8)
             make.centerY.equalToSuperview()
         }
-   }
+    }
 }
