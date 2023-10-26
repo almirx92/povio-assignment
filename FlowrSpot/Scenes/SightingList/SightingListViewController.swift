@@ -37,7 +37,7 @@ class SightingListViewController: UIViewController {
         return tableView
     }()
     
- //   private lazy var headerView = SightingListHeaderView()
+    private lazy var headerView = SightingListHeaderView()
     
     private lazy var footerView: UIView = {
         let view = UIView()
@@ -151,9 +151,9 @@ extension SightingListViewController: UITableViewDelegate, UITableViewDataSource
         return 500
     }
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return headerView
-//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return headerView
+    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         120

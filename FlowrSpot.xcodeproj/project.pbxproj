@@ -59,6 +59,7 @@
 		882DB37A2AEACBC400B5EFFB /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882DB3792AEACBC400B5EFFB /* CommentsTableViewCell.swift */; };
 		882DB37C2AEACC0200B5EFFB /* SightingDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882DB37B2AEACC0200B5EFFB /* SightingDetailsTableViewCell.swift */; };
 		882DB37E2AEACCC000B5EFFB /* InitialsAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882DB37D2AEACCC000B5EFFB /* InitialsAvatarView.swift */; };
+		882DB3802AEAE1F900B5EFFB /* SightingListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882DB37F2AEAE1F900B5EFFB /* SightingListHeaderView.swift */; };
 		88B07E0B2AD1C021006F87BB /* SightingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B07E0A2AD1C021006F87BB /* SightingListViewController.swift */; };
 		88B07E0D2AD1C0D3006F87BB /* SightingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B07E0C2AD1C0D3006F87BB /* SightingPresenter.swift */; };
 		88B07E0F2AD1C0E4006F87BB /* SightingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B07E0E2AD1C0E4006F87BB /* SightingRouter.swift */; };
@@ -163,6 +164,7 @@
 		882DB3792AEACBC400B5EFFB /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		882DB37B2AEACC0200B5EFFB /* SightingDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightingDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		882DB37D2AEACCC000B5EFFB /* InitialsAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialsAvatarView.swift; sourceTree = "<group>"; };
+		882DB37F2AEAE1F900B5EFFB /* SightingListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightingListHeaderView.swift; sourceTree = "<group>"; };
 		88B07E0A2AD1C021006F87BB /* SightingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightingListViewController.swift; sourceTree = "<group>"; };
 		88B07E0C2AD1C0D3006F87BB /* SightingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightingPresenter.swift; sourceTree = "<group>"; };
 		88B07E0E2AD1C0E4006F87BB /* SightingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightingRouter.swift; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 			children = (
 				88B07E212AD47E78006F87BB /* SightCommentView.swift */,
 				88B07E1D2AD47E3F006F87BB /* SightImageView.swift */,
+				882DB37F2AEAE1F900B5EFFB /* SightingListHeaderView.swift */,
 				88B07E1B2AD37802006F87BB /* SightListTableViewCell.swift */,
 				88B07E1F2AD47E67006F87BB /* SightMessageView.swift */,
 			);
@@ -832,6 +835,7 @@
 				882DB37C2AEACC0200B5EFFB /* SightingDetailsTableViewCell.swift in Sources */,
 				882DB3752AEACA5900B5EFFB /* SightingDetailsViewController.swift in Sources */,
 				88B07E112AD1C0FD006F87BB /* SightingInteractor.swift in Sources */,
+				882DB3802AEAE1F900B5EFFB /* SightingListHeaderView.swift in Sources */,
 				88B07E0B2AD1C021006F87BB /* SightingListViewController.swift in Sources */,
 				88B07E0D2AD1C0D3006F87BB /* SightingPresenter.swift in Sources */,
 				88B07E0F2AD1C0E4006F87BB /* SightingRouter.swift in Sources */,

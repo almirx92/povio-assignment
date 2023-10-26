@@ -18,3 +18,8 @@
 "home_search_placeholder" = "Looking for something specific?";
 
 "sightings_count" = "%d sightings";
+
+/** SightingList Scene */
+
+"SightingList_title" = "Sighting List";
+"SightingList_subtitle" = "Explore between more than 8.427 sightings";
