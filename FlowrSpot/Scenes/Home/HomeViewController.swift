@@ -93,11 +93,10 @@ extension HomeViewController: UIScrollViewDelegate {
 // MARK: - Private methods
 private extension HomeViewController {
   func setupViews() {
-    navigationItem.title = "general_app_name".localized()
+  //  navigationItem.title = "general_app_name".localized()
     navigationItem.rightBarButtonItem = UIBarButtonItem(customView: contentView.rightBarButton)
     setupContentView()
   }
-  
   func setupContentView() {
     contentView.rightBarButton.setImage(UIImage(named: "plIconSearch"), for: .normal)
     contentView.rightBarButton.addTarget(self, action: #selector(barButtonPressed), for: .touchUpInside)
