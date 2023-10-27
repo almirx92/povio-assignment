@@ -48,9 +48,14 @@ class SightingListViewController: UIViewController {
     private lazy var addSightButton: MainButton = {
         let button = MainButton(type: .system)
         button.setTitle("+ Add New Sighting", for: .normal)
+        button.addTarget(self, action: #selector(DidTapAddSightButton), for: .touchUpInside)
         return button
     }()
     
+    //MARK: - Tap Actions
+    @objc func DidTapAddSightButton(){
+        print("Dugme pritisnuto")
+    }
     
     /// Layout Contrains
     fileprivate func layout() {
