@@ -48,9 +48,11 @@ class SightingListViewController: UIViewController {
     private lazy var addSightButton: MainButton = {
         let button = MainButton(type: .system)
         button.setTitle("+ Add New Sighting", for: .normal)
+        button.addTarget(self, action: #selector(DidTapAddSightButton), for: .touchUpInside)
         return button
     }()
     
+   
     
     /// Layout Contrains
     fileprivate func layout() {
@@ -163,4 +165,25 @@ extension SightingListViewController: UITableViewDelegate, UITableViewDataSource
         guard let sightingId = dataSource[indexPath.row].id else { return }
         router?.openDetails(sightingId: sightingId)
     }
+}
+
+extension SightingListViewController : UIImagePickerControllerDelegate , UINavigationControllerDelegate{
+    
+    //MARK: - Tap Actions
+    @objc func DidTapAddSightButton(){
+        print("Dugme pritisnuto")
+        let cameraPicker = UIImagePickerController()
+                cameraPicker.sourceType = .camera
+                cameraPicker.delegate = self
+                present(cameraPicker, animated: true, completion: nil)
+    }
+    // Delegate method to handle the captured image or video
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let image = info[.originalImage] as? UIImage {
+                // Handle the captured image here
+                // You can display it or save it to the photo library, for example
+                // Remember to dismiss the UIImagePickerController
+                picker.dismiss(animated: true, completion: nil)
+            }
+        }
 }
