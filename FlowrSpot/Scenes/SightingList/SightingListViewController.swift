@@ -9,17 +9,35 @@
 import UIKit
 import SnapKit
 
+protocol SightingsDisplayLogic: AnyObject{
+    func displaySightings(_ sightings: SightingsAPI.SightingsResponse)
+    func displayError(title: String, message: String)
+}
+
 class SightingListViewController: UIViewController {
-    //MARK :- SubViews
+    //MARK: - Attributes
+    var interactor : SightingBusinessLogic?
+    var router: SightingRoutingLogic?
+    
+    private var dataSource: [SightingsAPI.Sighting] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+
+    
+    //MARK: - SubViews
     private lazy var tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = UIColor.white
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(SightingTableViewCell.self)
         return tableView
     }()
+    
+    private lazy var headerView = SightingListHeaderView()
     
     private lazy var footerView: UIView = {
         let view = UIView()
@@ -29,9 +47,12 @@ class SightingListViewController: UIViewController {
     
     private lazy var addSightButton: MainButton = {
         let button = MainButton(type: .system)
-        button.setTitle(" Add New Sighting", for: .normal)
+        button.setTitle("+ Add New Sighting", for: .normal)
+        button.addTarget(self, action: #selector(DidTapAddSightButton), for: .touchUpInside)
         return button
     }()
+    
+   
     
     /// Layout Contrains
     fileprivate func layout() {
@@ -42,14 +63,11 @@ class SightingListViewController: UIViewController {
         footerView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(self.view.safeAreaLayoutGuide)
-            make.height.equalTo(100)
+            make.height.equalTo(80)
         }
         
         addSightButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
-            make.width.equalTo(200)
-            make.height.equalTo(48)
+            make.edges.equalToSuperview().inset(16)
         }
     }
     
@@ -60,43 +78,112 @@ class SightingListViewController: UIViewController {
         footerView.addSubview(addSightButton)
     }
     
-    // MARK :- Lifecycles
+    func setup(){
+        let interactor = SightingsInteractor()
+        let presenter = SightingsPresenter()
+        let router = SightingRouter()
+        
+        let viewController = self
+        
+        viewController.interactor = interactor
+        viewController.router = router
+        
+        interactor.presenter = presenter
+        
+        presenter.viewController = viewController
+        router.viewController = viewController
+    }
+    
+    func loadData() {
+      interactor?.fetchSightingsList()
+    }
+    
+    // MARK: - Lifecycles
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
         addSubViews()
         layout()
+        setup()
+        loadData()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+}
 
+//MARK: - Display Logic
+extension SightingListViewController: SightingsDisplayLogic{
+    func displaySightings(_ sightings: SightingsAPI.SightingsResponse) {
+        if let newSightings = sightings.sightings {
+                    dataSource = newSightings
+                }
     }
+    
+    func displayError(title: String, message: String) {
+        return
+    }
+    
+    
 }
 
 extension SightingListViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows you want in your table
-        return 10
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        // Configure the cell with data
-        //cell.textLabel?.text = "Row \(indexPath.row)"
-        
+        let cell = tableView.dequeueCell(SightingTableViewCell.self)
+        // Access the data for the current row
+        if !dataSource.isEmpty {
+            let data = dataSource[indexPath.row]
+            cell.configure(data)  // Configure the cell with the data
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 500
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        120
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let sightingId = dataSource[indexPath.row].id else { return }
+        router?.openDetails(sightingId: sightingId)
+    }
 }
 
+extension SightingListViewController : UIImagePickerControllerDelegate , UINavigationControllerDelegate{
+    
+    //MARK: - Tap Actions
+    @objc func DidTapAddSightButton(){
+        print("Dugme pritisnuto")
+        let cameraPicker = UIImagePickerController()
+                cameraPicker.sourceType = .camera
+                cameraPicker.delegate = self
+                present(cameraPicker, animated: true, completion: nil)
+    }
+    // Delegate method to handle the captured image or video
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let image = info[.originalImage] as? UIImage {
+                // Handle the captured image here
+                // You can display it or save it to the photo library, for example
+                // Remember to dismiss the UIImagePickerController
+                picker.dismiss(animated: true, completion: nil)
+            }
+        }
+}

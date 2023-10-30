@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 
 final class SightingTableViewCell: UITableViewCell {
+    
     // MARK: - Subviews
     private lazy var sightImage = UIImageView()
     private lazy var titleLabel = UILabel()
@@ -26,6 +27,12 @@ final class SightingTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    //MARK: - Configure
+    func configure(_ sighting : SightingsAPI.Sighting) {
+        sightImageView.configure(sighting)
+        sightMessageView.configure(sighting)
+        sightCommentView.configure(sighting)
     }
     
     

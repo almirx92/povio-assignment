@@ -9,13 +9,15 @@
 import UIKit
 
 class SightCommentView: UIView {
+    //MARK: - Datasource
+    var data : SightingsAPI.Sighting?
     
     //MARK: - Atributes
-    private lazy var profileImageView = UIImageView()
+    private lazy var profileImageView = InitialsAvatarView()
     private lazy var flowerTitle = UILabel()
     private lazy var authorTitle = UILabel()
-    private lazy var descriptionText = UITextView()
-    private lazy var borderView = UIView()
+    private lazy var descriptionText = UILabel()
+    lazy var borderView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,6 +29,19 @@ class SightCommentView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    //MARK: - Configure
+    func configure(_ sighting : SightingsAPI.Sighting) {
+        if let fullName = sighting.user?.fullName {
+            authorTitle.text = "by " + fullName
+            profileImageView.setProfileName(fullName)
+        } else {
+            profileImageView.setProfileName("N N")
+            authorTitle.text = "by Uknown"
+        }
+        
+        flowerTitle.text = sighting.flower?.name ?? "-"
+        descriptionText.text = sighting.description
     }
     // MARK: - Add sub views
     private func addSubViews(){
@@ -42,28 +57,26 @@ class SightCommentView: UIView {
         backgroundColor = UIColor.white
         
         //Profile Image
-        guard let url = URL(string: "https://images.unsplash.com/photo-1604085572504-a392ddf0d86a") else { return }
-        profileImageView.setImage(with: url)
         profileImageView.layer.cornerRadius = 20//profileImageView.frame.size.width / 2.0
         profileImageView.clipsToBounds = true // This ensures that the image stays within the rounded bounds
         
         //Flower Title
-        flowerTitle.text = "Ballon Flowers"
-        flowerTitle.font = UIFont.preferredFont(forTextStyle: .headline)
+        flowerTitle.font = .custom(type: .regular, size: 15)
         flowerTitle.textColor = .black
         
         //Author Title
-        authorTitle.text = "by Anthony Moore"
-        authorTitle.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        authorTitle.textColor = .gray
-        
-        //Description Text
-        descriptionText.text = "Platycodon grandiflorus (from Ancient Greek πλατύς \"wide\" and κώδων \"bell\") is a species of herbaceous flowering perennial plant of the …"
+        authorTitle.font = .custom(type: .italic, size: 12)
+        authorTitle.textColor = .flowrGray
         
         //Border View
-        borderView.backgroundColor = .gray
+        borderView.backgroundColor = .separatorColor
         
+        descriptionText.font = .custom(type: .regular, size: 13)
+        descriptionText.textColor = .flowrGray
+        descriptionText.numberOfLines = 0
+        descriptionText.lineBreakMode = .byWordWrapping
     }
+    
     //MARK: - Layout
     private func layout(){
         profileImageView.snp.makeConstraints { make in
@@ -72,30 +85,35 @@ class SightCommentView: UIView {
             make.width.equalTo(40)
             make.height.equalTo(40)
         }
+        
         flowerTitle.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
-            make.leading.equalTo(profileImageView.snp.trailing).offset(40)
-            make.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(24)
+            make.leading.equalTo(profileImageView.snp.trailing).offset(20)
         }
+        
         authorTitle.snp.makeConstraints { make in
-            make.top.equalTo(flowerTitle.snp.bottom).offset(8)
-            make.leading.equalTo(profileImageView.snp.trailing).offset(40)
+            make.top.equalTo(flowerTitle.snp.bottom).offset(5)
+            make.leading.equalTo(profileImageView.snp.trailing).offset(20)
             make.trailing.equalToSuperview()
         }
+        
         descriptionText.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(80)
-            make.leading.equalToSuperview().offset(40)
-            make.trailing.equalToSuperview().offset(-40)
-            make.height.equalTo(62)
-            
+            make.top.equalTo(profileImageView.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
         }
+        
         borderView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(40)
-            make.trailing.equalToSuperview().offset(-40)
-            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.top.equalTo(descriptionText.snp.bottom).offset(20)
             make.height.equalTo(1)
         }
         
+        self.snp.makeConstraints {
+            $0.top.equalTo(profileImageView.snp.top)
+            $0.bottom.equalTo(descriptionText.snp.bottom)
+        }
     }
 }
 
